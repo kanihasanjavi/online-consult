@@ -23,7 +23,7 @@ export default function Payment() {
 
   useEffect(() => {
     if (doctorId) getDoctorById(doctorId).then(r => setDoctor(r.data)).catch(() => {});
-  }, []);
+  }, [doctorId]);
 
   const formatCard = v => v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
   const formatExpiry = v => {
