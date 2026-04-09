@@ -11,10 +11,13 @@ const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] },
+  cors: { origin: ['http://localhost:3000', 'https://mediconsult-frontend.vercel.app'], methods: ['GET', 'POST'] },
 });
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://mediconsult-frontend.vercel.app'],
+  credentials: true
+}));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 

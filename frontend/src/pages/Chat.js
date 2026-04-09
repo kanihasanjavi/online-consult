@@ -37,7 +37,7 @@ export default function Chat() {
       finally { setLoading(false); }
     })();
 
-    const socket = io('http://localhost:5000');
+    const socket = io('https://mediconsult-backend.onrender.com');
     socketRef.current = socket;
     socket.on('connect',    () => { setConnected(true);  socket.emit('join_room', { appointmentId, userId: user.id, userName: user.name, role: user.role }); });
     socket.on('disconnect', () => setConnected(false));
