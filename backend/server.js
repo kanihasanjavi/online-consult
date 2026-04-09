@@ -141,6 +141,7 @@ io.on('connection', (socket) => {
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
-    server.listen(process.env.PORT, () => console.log(`✅ Server on http://localhost:${process.env.PORT}`));
+    const PORT = process.env.PORT || 5000;
+    server.listen(PORT, () => console.log(`✅ Server on http://localhost:${PORT}`));
   })
   .catch((err) => { console.error('❌ MongoDB error:', err.message); process.exit(1); });
